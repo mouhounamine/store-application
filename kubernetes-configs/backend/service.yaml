@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+
+spec:
+  selector:
+    app: backend  # Le service cible les pods avec ce label
+
+  ports:
+    - protocol: TCP
+      port: 8082  # Port accessible à l'extérieur du cluster
+      targetPort: 8081  # Port sur lequel l'application écoute à l'intérieur du conteneur
+
+  type: NodePort  # Type de service pour l'exposer

@@ -1,0 +1,6 @@
+Quand je fais "kubectl get services" j'ai :
+NAME              TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)          AGE
+backend-service   NodePort    10.106.144.102   <none>        8082:31962/TCP   5m9s
+
+Comme il est de type NodePort, la valeur de EXTERNAL-IP est vide (<none>),
+mais c'est l'IP de Minikube que j'obtiens avec "minikube ip" qui sera utilisée pour accéder à mon service.
