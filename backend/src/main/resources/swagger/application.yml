@@ -1,0 +1,38 @@
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui  # URL pour accéder à l'interface Swagger UI
+    doc-expansion: none  # Par défaut, les API ne sont pas dépliées dans Swagger UI
+    operations-sorter: method  # Tri des opérations par méthode (GET, POST, etc.)
+    try-it-out-enabled: true  # Active l'option "Try it out" dans Swagger UI
+  info:
+    title: "Mon API Store"
+    description: "API pour gérer les interactions avec les utilisateurs de la boutique en ligne."
+    version: "v1.0"
+    contact:
+      name: "Amine Mouhoun"
+      url: "http://site-de-l-auteur.com"
+      email: "amine.databases@gmail.com"
+  api:
+    /home/greet:
+      summary: "Envoyer un message de salutation"
+      description: "Cette API prend un objet GreetingRequest et renvoie un message personnalisé en fonction des informations fournies."
+      requestBody:
+        description: "Objet contenant le nom de l'utilisateur et un message à afficher."
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: "Nom de l'utilisateur"
+                message:
+                  type: string
+                  description: "Message à afficher"
+      responses:
+        '200':
+          description: "Message personnalisé envoyé avec succès."
+        '400':
+          description: "Données incorrectes."
