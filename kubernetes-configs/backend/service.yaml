@@ -5,11 +5,11 @@ metadata:
 
 spec:
   selector:
-    app: backend  # Le service cible les pods avec ce label
+    app: backend
 
   ports:
-    - protocol: TCP
-      port: 8082  # Port accessible à l'extérieur du cluster
-      targetPort: 8081  # Port sur lequel l'application écoute à l'intérieur du conteneur
+  - protocol: TCP
+    port: 8082
+    targetPort: 8081
 
-  type: NodePort  # Type de service pour l'exposer
+  type: LoadBalancer

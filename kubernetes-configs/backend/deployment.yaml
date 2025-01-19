@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend-deployment
+  namespace: store-application
 
 spec:
   replicas: 1
@@ -16,8 +17,14 @@ spec:
         app: backend
     spec:
       containers:
-        - name: backend
-          image: aminedatabases/backend:latest
-          ports:
-            - containerPort: 8081
-
+      - name: backend
+        image: aminedatabases/backend:latest
+        ports:
+        - containerPort: 8081
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
