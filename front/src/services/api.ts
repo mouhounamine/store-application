@@ -1,6 +1,6 @@
 export async function fetchProductList() {
   try {
-    const response = await fetch("http://localhost:8081/api/products");
+    const response = await fetch("http://localhost:8083/api/products");
     const responseBody = await response.json();
     console.log("Product List:", responseBody);
     return responseBody;
@@ -12,7 +12,7 @@ export async function fetchProductList() {
 export async function fetchProductById(productId: string) {
   try {
     const response = await fetch(
-      `http://localhost:8081/api/products/${productId}`
+      `http://localhost:8083/api/products/${productId}`
     );
     const responseBody = await response.json();
     console.log("Product Details:", responseBody);
@@ -24,7 +24,7 @@ export async function fetchProductById(productId: string) {
 
 export async function createProduct(productData: any) {
   try {
-    const response = await fetch("http://localhost:8081/api/products", {
+    const response = await fetch("http://localhost:8083/api/products", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ export async function createProduct(productData: any) {
 export async function updateProduct(productId: string, productData: any) {
   try {
     const response = await fetch(
-      `http://localhost:8081/api/products/${productId}`,
+      `http://localhost:8083/api/products/${productId}`,
       {
         method: "PUT",
         headers: {
@@ -62,7 +62,7 @@ export async function updateProduct(productId: string, productData: any) {
 export async function deleteProduct(productId: string) {
   try {
     const response = await fetch(
-      `http://localhost:8081/api/products/${productId}`,
+      `http://localhost:8083/api/products/${productId}`,
       {
         method: "DELETE",
       }

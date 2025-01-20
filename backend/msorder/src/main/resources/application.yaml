@@ -1,12 +1,12 @@
 spring:
   application:
-    name: backend
+    name: msorder
   doc:
     api-docs:
       path: /api-docs
 
 server:
-  port: 8081
+  port: 8082
 
 store:
   frontend:

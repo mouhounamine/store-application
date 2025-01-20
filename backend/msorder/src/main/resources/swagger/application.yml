@@ -1,0 +1,101 @@
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui  # URL pour accéder à l'interface Swagger UI
+    doc-expansion: none  # Par défaut, les API ne sont pas dépliées dans Swagger UI
+    operations-sorter: method  # Tri des opérations par méthode (GET, POST, etc.)
+    try-it-out-enabled: true  # Active l'option "Try it out" dans Swagger UI
+  info:
+    title: "Mon API Store"
+    description: "API pour gérer les commandes de la boutique en ligne."
+    version: "v1.0"
+    contact:
+      name: "Amine Mouhoun"
+      url: "http://site-de-l-auteur.com"
+      email: "amine.databases@gmail.com"
+  api:
+    /api/order:
+      post:
+        summary: "Créer une commande"
+        description: "Crée une nouvelle commande avec les données fournies."
+        requestBody:
+          description: "Les données de la commande à créer."
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: "L'identifiant de la commande."
+                  items:
+                    type: array
+                    items:
+                      type: string
+                    description: "Liste des articles dans la commande."
+        responses:
+          '201':
+            description: "Commande créée avec succès."
+          '400':
+            description: "Données invalides."
+      get:
+        summary: "Lister toutes les commandes"
+        description: "Récupère une liste de toutes les commandes."
+        responses:
+          '200':
+            description: "Liste des commandes."
+    /api/order/{orderId}:
+      get:
+        summary: "Récupérer une commande"
+        description: "Récupère les détails d'une commande en fonction de son identifiant."
+        parameters:
+          - name: "orderId"
+            in: path
+            required: true
+            schema:
+              type: string
+            description: "L'identifiant de la commande."
+        responses:
+          '200':
+            description: "Détails de la commande."
+          '404':
+            description: "Commande introuvable."
+      put:
+        summary: "Mettre à jour une commande"
+        description: "Met à jour une commande existante avec les nouvelles données fournies."
+        parameters:
+          - name: "orderId"
+            in: path
+            required: true
+            schema:
+              type: string
+            description: "L'identifiant de la commande."
+        requestBody:
+          description: "Les données de mise à jour de la commande."
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+        responses:
+          '200':
+            description: "Commande mise à jour avec succès."
+          '404':
+            description: "Commande introuvable."
+      delete:
+        summary: "Supprimer une commande"
+        description: "Supprime une commande en fonction de son identifiant."
+        parameters:
+          - name: "orderId"
+            in: path
+            required: true
+            schema:
+              type: string
+            description: "L'identifiant de la commande."
+        responses:
+          '200':
+            description: "Commande supprimée avec succès."
+          '404':
+            description: "Commande introuvable."

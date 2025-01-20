@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-deployment
+  name: msorder-deployment
   namespace: store-application
 
 spec:
@@ -9,18 +9,18 @@ spec:
 
   selector:
     matchLabels:
-      app: backend
+      app: msorder
 
   template:
     metadata:
       labels:
-        app: backend
+        app: msorder
     spec:
       containers:
-      - name: backend
-        image: aminedatabases/backend:latest
+      - name: msorder
+        image: aminedatabases/msorder:latest
         ports:
-        - containerPort: 8081
+        - containerPort: 8082
         resources:
           requests:
             memory: "256Mi"

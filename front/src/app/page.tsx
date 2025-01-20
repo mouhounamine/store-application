@@ -19,7 +19,7 @@ export default function Home() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8081/api/products");
+        const response = await fetch("http://localhost:8083/api/products");
         if (!response.ok) {
           throw new Error("Failed to fetch products");
         }
